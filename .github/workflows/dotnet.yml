@@ -12,8 +12,10 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2    
+    - uses: actions/checkout@v2
     - name: Cake Action
       uses: cake-build/cake-action@v1.3.0
+      env:
+        COVERALLS_REPO_TOKEN: "WXuolpMa24EaTAlGrhMYHteVc49Ng62ug"
       with:
         target: Upload-Coverage-Report

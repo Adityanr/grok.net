@@ -84,9 +84,10 @@ Task("Upload-Coverage-Report")
     .WithCriteria((context) => FileExists(testResultFile))
     .Does(() =>
 {
-    CoverallsIo(testResultFile, new CoverallsIoSettings()
+    CoverallsIo("./coverage/results.xml", new CoverallsIoSettings()
     {
-        RepoToken = coverallsRepoToken
+        RepoToken = coverallsRepoToken,
+        Debug = true
     });
 });
 

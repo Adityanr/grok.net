@@ -69,7 +69,8 @@ Task("Run-Unit-Tests")
             },
             testResultFile, new OpenCoverSettings() {
                 Filters = { "-[*xunit*]*", "-[GrokNetTests.UnitTests]*", "+[*]*" },
-                LogLevel = OpenCoverLogLevel.Debug
+                LogLevel = OpenCoverLogLevel.Debug,
+                OldStyle = true
             }
         );
     }
@@ -84,7 +85,7 @@ Task("Upload-Coverage-Report")
     .WithCriteria((context) => FileExists(testResultFile))
     .Does(() =>
 {
-    CoverallsIo("./coverage/results.xml", new CoverallsIoSettings()
+    CoverallsIo(testResultFile, new CoverallsIoSettings()
     {
         RepoToken = coverallsRepoToken,
         Debug = true

@@ -1,6 +1,5 @@
 // Install addins.
 #addin "nuget:https://api.nuget.org/v3/index.json?package=Cake.Coveralls&version=1.0.0"
-#addin nuget:?package=Microsoft.NET.Test.Sdk&version=16.11.0
 
 // Install tools
 #tool "nuget:https://api.nuget.org/v3/index.json?package=coveralls.io&version=1.4.2"
@@ -13,6 +12,7 @@ var artifactsDir = "./artifacts/";
 var projectFile = "./src/Grok.Net/Grok.Net.csproj";
 var testResultFile = "./test-results/results.xml";
 var coverallsRepoToken = EnvironmentVariable("COVERALLS_REPO_TOKEN");
+var userprofile = EnvironmentVariable("USERPROFILE");
 
 Task("Clean")
     .Does(() =>
@@ -73,6 +73,8 @@ Task("Run-Unit-Tests")
             }
         );
     }
+
+    Console.WriteLine(userprofile);
 });
 
 Task("Upload-Coverage-Report")

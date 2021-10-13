@@ -1,9 +1,11 @@
 // Install addins.
 #addin "nuget:https://api.nuget.org/v3/index.json?package=Cake.Coveralls&version=1.0.0"
+#addin "nuget:https://api.nuget.org/v3/index.json?package=Microsoft.NET.Test.Sdk&version=16.11.0"
 
 // Install tools
-#tool nuget:?package=OpenCover&version=4.7.1221
+#tool "nuget:https://api.nuget.org/v3/index.json?package=OpenCover&version=4.7.1221"
 #tool "nuget:https://api.nuget.org/v3/index.json?package=coveralls.io&version=1.4.2"
+#tool "nuget:https://api.nuget.org/v3/index.json?package=Microsoft.NET.Test.Sdk&version=16.11.0"
 
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");

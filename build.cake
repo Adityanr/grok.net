@@ -1,9 +1,9 @@
 // Install addins.
 #addin "nuget:https://api.nuget.org/v3/index.json?package=Cake.Coveralls&version=1.0.0"
+#addin nuget:?package=Cake.Coverlet&version=2.5.4
 
 // Install tools
 #tool "nuget:https://api.nuget.org/v3/index.json?package=coveralls.io&version=1.4.2"
-#tool nuget:?package=OpenCover&version=4.7.1221
 
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
@@ -58,24 +58,19 @@ Task("Run-Unit-Tests")
     }
     else
     {
-        OpenCover(tool => {
-                tool.DotNetCoreTest(
-                System.IO.Path.GetFullPath(projectFile),
-                new DotNetCoreTestSettings()
-                {
-                    Configuration = configuration
-                }
-                );
-            },
-            testResultFile, new OpenCoverSettings() {
-                Filters = { "-[*xunit*]*", "-[GrokNetTests.UnitTests]*", "+[*]*" },
-                LogLevel = OpenCoverLogLevel.Debug,
-                OldStyle = true
-            }
-        );
-    }
+        var coverletSettings = new CoverletSettings {
+            CollectCoverage = true,
+            CoverletOutputFormat = CoverletOutputFormat.opencover,
+            CoverletOutputDirectory = Directory(@".\test-results\"),
+            CoverletOutputName = $"results.xml"
+        };
 
-    Console.WriteLine(userprofile);
+        DotNetCoreTest(System.IO.Path.GetFullPath(projectFile), new DotNetCoreTestSettings()
+        {
+            Configuration = configuration
+        },
+        coverletSettings);
+    }
 });
 
 Task("Upload-Coverage-Report")

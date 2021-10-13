@@ -62,7 +62,7 @@ Task("Run-Unit-Tests")
             CollectCoverage = true,
             CoverletOutputFormat = CoverletOutputFormat.opencover,
             CoverletOutputDirectory = Directory(@".\test-results\"),
-            CoverletOutputName = $"results.xml"
+            CoverletOutputName = "results.xml"
         };
 
         DotNetCoreTest(System.IO.Path.GetFullPath(projectFile), new DotNetCoreTestSettings()

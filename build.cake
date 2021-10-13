@@ -70,13 +70,10 @@ Task("Run-Unit-Tests")
             },
             testResultFile, new OpenCoverSettings() {
                 Filters = { "-[*xunit*]*", "-[GrokNetTests.UnitTests]*", "+[*]*" },
-                Register = "User"
+                LogLevel = OpenCoverLogLevel.Debug
             }
         );
     }
-    
-    Console.WriteLine("--------------------------------------------");
-    Console.WriteLine(coverallsRepoToken);
 });
 
 Task("Upload-Coverage-Report")

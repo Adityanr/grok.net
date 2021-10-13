@@ -72,6 +72,9 @@ Task("Run-Unit-Tests")
             }
         );
     }
+    
+    Console.WriteLine("--------------------------------------------");
+    Console.WriteLine(coverallsRepoToken);
 });
 
 Task("Upload-Coverage-Report")

@@ -67,14 +67,11 @@ Task("Run-Unit-Tests")
                 );
             },
             testResultFile, new OpenCoverSettings() {
-                Filters = { "-[*xunit*]*", "+[*]*" },
+                Filters = { "-[*xunit*]*", "-[GrokNetTests.UnitTests]*", "+[*]*" },
                 Register = "User"
             }
         );
     }
-    
-    Console.WriteLine("-----------------------------------")
-    Console.WriteLine(FileExists(testResultFile))
 });
 
 Task("Upload-Coverage-Report")

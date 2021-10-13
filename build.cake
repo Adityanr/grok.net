@@ -4,7 +4,6 @@
 
 // Install tools
 #tool "nuget:https://api.nuget.org/v3/index.json?package=coveralls.io&version=1.4.2"
-#tool nuget:?package=Microsoft.NET.Test.Sdk&version=16.11.0
 #tool nuget:?package=OpenCover&version=4.7.1221
 
 var target = Argument("target", "Default");

@@ -68,7 +68,7 @@ Task("Run-Unit-Tests")
             },
             testResultFile, new OpenCoverSettings() {
                 Filters = { "-[*xunit*]*", "-[GrokNetTests.UnitTests]*", "+[*]*" },
-                Register = "User"
+                Register = "Path64"
             }
         );
     }

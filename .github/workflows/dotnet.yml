@@ -16,6 +16,6 @@ jobs:
     - name: Cake Action
       uses: cake-build/cake-action@v1.3.0
       env:
-        COVERALLS_REPO_TOKEN: "WXuolpMa24EaTAlGrhMYHteVc49Ng62ug"
+        COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
       with:
         target: Upload-Coverage-Report

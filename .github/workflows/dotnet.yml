@@ -1,0 +1,19 @@
+name: Windows Build
+
+on:
+  push:
+    branches: [ workflow-opencover-issue ]
+  pull_request:
+    branches: [ workflow-opencover-issue ]
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2    
+    - name: Cake Action
+      uses: cake-build/cake-action@v1.3.0
+      with:
+        target: Upload-Coverage-Report
